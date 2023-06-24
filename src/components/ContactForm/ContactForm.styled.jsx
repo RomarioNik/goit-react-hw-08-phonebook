@@ -16,12 +16,6 @@ export const InputContact = styled.input`
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.bgItems};
   outline: none;
-  transition: box-shadow 250ms linear;
-
-  &:focus,
-  &:not(:placeholder-shown) {
-    box-shadow: ${({ theme }) => theme.shadow.shadowButton};
-  }
 `;
 
 export const Button = styled.button`
@@ -31,9 +25,4 @@ export const Button = styled.button`
   border: 1px solid ${({ theme }) => theme.colors.borderColor};
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.bgItems};
-  transition: box-shadow 250ms linear;
-
-  &:hover {
-    box-shadow: ${({ theme }) => theme.shadow.shadowButton};
-  }
 `;

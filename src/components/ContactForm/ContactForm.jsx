@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Form, InputContact, Button } from './ContactForm.styled';
-import { addContact } from '../../redux/operations';
-import { selectContacts } from '../../redux/selector';
+import { addContact } from '../../redux/contacts-operations';
+import { selectContacts } from '../../redux/contacts-selector.js';
 
 const checkDuplicateName = (contacts, nameContact) => {
   const newName = nameContact.toLowerCase();
@@ -11,7 +11,7 @@ const checkDuplicateName = (contacts, nameContact) => {
 
 const ContactForm = () => {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
 
   const items = useSelector(selectContacts);
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const ContactForm = () => {
   };
 
   const handleChangeInputNumber = ({ target: { value } }) => {
-    setPhone(value);
+    setNumber(value);
   };
 
   const handleSubmitForm = e => {
@@ -33,13 +33,13 @@ const ContactForm = () => {
       return;
     }
 
-    dispatch(addContact({ name, phone }));
+    dispatch(addContact({ name, number }));
     resetForm();
   };
 
   const resetForm = () => {
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   return (
@@ -57,8 +57,8 @@ const ContactForm = () => {
 
       <InputContact
         type="tel"
-        name="phone"
-        value={phone}
+        name="number"
+        value={number}
         onChange={handleChangeInputNumber}
         placeholder="Phone number"
         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"

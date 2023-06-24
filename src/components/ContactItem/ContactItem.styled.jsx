@@ -1,16 +1,23 @@
 import styled from 'styled-components';
 import { ReactComponent as defaultAvatar } from '../../images/avatar-def.svg';
-import { ReactComponent as trash } from '../../images/trash.svg';
+import { ReactComponent as trash } from '../../images/trash-icon.svg';
+import { ReactComponent as update } from '../../images/update.svg';
 
 export const ListItem = styled.li`
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 20px;
   width: 100%;
 
   &:not(:last-child) {
     margin-bottom: 8px;
   }
+`;
+
+export const ContactWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
 `;
 
 export const AvatarWrapper = styled.div`
@@ -41,21 +48,26 @@ export const Phone = styled.p`
 `;
 
 export const IconTrash = styled(trash)`
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
+  fill: #ff7d7d;
+`;
+
+export const IconUpdate = styled(update)`
+  width: 25px;
+  height: 25px;
+  fill: #7d81ff;
 `;
 
 export const TrashButton = styled(AvatarWrapper).attrs(() => ({
   as: 'button',
 }))`
+  width: auto;
+  height: auto;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   border: none;
-  background-color: #7d81ff;
-  transition: box-shadow 250ms ease-in-out;
-
-  &:hover {
-    box-shadow: ${({ theme }) => theme.shadow.shadowButton};
-  }
+  background-color: transparent;
 `;

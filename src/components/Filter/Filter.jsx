@@ -5,11 +5,11 @@ import {
   ButtonFilter,
   Cross,
 } from './Filter.styled';
-import { selectFilterValue } from '../../redux/selector';
-import { addFilter, resetFilter } from '../../redux/filterSlice';
+import { selectFilter } from '../../redux/filter-selector';
+import { addFilter, resetFilter } from '../../redux/filter-slice';
 
 const Filter = () => {
-  const searchValue = useSelector(selectFilterValue);
+  const searchValue = useSelector(selectFilter);
 
   const dispatch = useDispatch();
 
