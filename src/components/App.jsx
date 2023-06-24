@@ -31,7 +31,7 @@ const App = () => {
     };
 
     token && !isLoggedIn && fetchCurrentUser();
-  }, [dispatch, token, isLoggedIn]);
+  }, [dispatch, token, isLoggedIn, navigate]);
 
   return (
     <Routes>
