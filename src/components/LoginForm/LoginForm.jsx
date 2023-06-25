@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { PATHS } from 'constants/paths';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { login, register } from 'redux/auth-operations';
 import {
   Form,
@@ -15,6 +15,8 @@ import {
   ButtonStyled,
   IconArrow,
 } from './LoginForm.styled';
+import { selectIsLoading } from 'redux/auth-selector';
+import Loader from 'components/Loader/Loader';
 
 const LoginForm = () => {
   const [name, setName] = useState('');
@@ -22,6 +24,8 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
 
   const dispatch = useDispatch();
+
+  const isLoading = useSelector(selectIsLoading);
 
   const location = useLocation();
   const isPathNameLogin = location.pathname === `/${PATHS.LOGIN}`;
@@ -51,6 +55,7 @@ const LoginForm = () => {
 
   return (
     <>
+      {isLoading && <Loader />}
       <Form onSubmit={handleFormSubmit}>
         <Title>{isPathNameLogin ? 'Welcome Back!' : 'Create Account'}</Title>
 

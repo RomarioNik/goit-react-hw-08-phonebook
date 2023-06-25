@@ -18,11 +18,7 @@ export const List = styled.ul`
   border-radius: 24px;
 `;
 
-export const Loading = styled.p`
+export const Error = styled.p`
   text-align: center;
-  color: blue;
-`;
-
-export const Error = styled(Loading)`
   color: red;
 `;

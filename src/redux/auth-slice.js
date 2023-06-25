@@ -57,8 +57,8 @@ const authSlice = createSlice({
       .addCase(login.fulfilled, handleFulfilled)
       .addCase(logout.fulfilled, handleFulfilledLogout)
       .addCase(currentUser.fulfilled, handleFulfilledCurrentUser)
-      .addMatcher(action => action.type.endsWith('/pending', handlePending))
-      .addMatcher(action => action.type.endsWith('/rejected', handleRejected));
+      .addMatcher(({ type }) => type.endsWith('/pending'), handlePending)
+      .addMatcher(({ type }) => type.endsWith('/rejected'), handleRejected)
   },
 });
 

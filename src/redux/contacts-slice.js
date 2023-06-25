@@ -57,9 +57,9 @@ const contactSlice = createSlice({
       .addCase(addContact.fulfilled, handleFulfilledAddContact)
       .addCase(deleteContact.fulfilled, handleFulfilledDeleteContact)
       .addCase(updateContact.fulfilled, handleFulfilledUpdateContact)
-      .addMatcher(action => action.type.endsWith('/pending', handlePending))
-      .addMatcher(action => action.type.endsWith('/rejected', handleRejected));
-  },
+      .addMatcher(({ type }) => type.endsWith('/pending'), handlePending)
+      .addMatcher(({ type }) => type.endsWith('/rejected'), handleRejected)
+    },
 });
 
 export const contactsReducer = contactSlice.reducer;
