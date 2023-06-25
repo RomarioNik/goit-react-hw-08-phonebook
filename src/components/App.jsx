@@ -3,16 +3,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
 import Layout from './Layout/Layout';
-import HomePage from './pages/HomePage';
-import RegisterPage from './pages/RegisterPage';
-import ContactsPage from './pages/ContactsPage';
-import LoginPage from './pages/LoginPage';
 import { PATHS } from 'constants/paths';
 import { currentUser } from 'redux/auth-operations';
 import { selectIsLoggedIn, selectToken } from 'redux/auth-selector';
 import PrivetRoute from './PrivetRoute/PrivetRoute';
 import { deleteToken } from 'redux/auth-slice';
 import PublicRoute from './PublicRoute/PublicRoute';
+import { lazy } from 'react';
+
+const HomePage = lazy(() => import('./pages/HomePage'));
+const RegisterPage = lazy(() => import('./pages/RegisterPage'));
+const ContactsPage = lazy (() => import('./pages/ContactsPage'));
+const LoginPage = lazy(() => import('./pages/LoginPage'));
 
 const App = () => {
   const token = useSelector(selectToken);
